@@ -1,11 +1,8 @@
 var map;
 
-function test(event) {
-  console.log("foo");
-}
-
 function heatMap (position, map, data)
 {
+  console.log("HEATMAP");
   var closeData = [];
   maxDistanceAway = 0.01; //In terms of lat/long
   datapoints = data.length;
@@ -28,30 +25,40 @@ function heatMap (position, map, data)
   heatmap.setMap(map);
 
 }
-
-function getData()
+function parseData(raw_data)
 {
-  var data;
-  var realData = [];
-  jQuery.getJSON( metric_url, function (result) {
-      data = result;
-      console.log(data);
-    length = data.length;
-    for(var i=0; i < length; i++)
+    console.log("PARSEDATA");
+    console.log("DATA:");
+    console.log(raw_data);
+    var data = [];
+    for(var i=0; i < raw_data.length; i++)
     {
-      var lat = data['latitude'];
-      var lng = data['longitude'];
-      var strength = data['rssi'];
-      console.log({location: new google.maps.LatLng(lat, lng), weight:strength});
-      realData.push({location: new google.maps.LatLng(lat, lng), weight:strength});
+      var row = raw_data[i];
+      var lat = row.latitude;
+      var lng = row.longitude;
+      var strength = row.rssi;
+      row = {location: new google.maps.LatLng(lat, lng), weight:strength};
+      console.log("Pushing row:");
+      console.log(row);
+      data.push(row);
     }
-  });
+    if(data !== null && data !== undefined)
+    {
+          heatMap(pos, map, data);
+    }
+    else
+    {
+      console.log("No data");
+    }
+}
 
-  console.log(realData);
-   return realData;
+function getData(){
+  console.log("GETDATA");
+  jQuery.getJSON(metric_url, parseData);
 }
 
 function initialize() {
+  console.log("INITIALIZE");
   var mapOptions = {
     zoom: 19
   };
@@ -72,27 +79,12 @@ function initialize() {
       });
 
     google.maps.event.addListener(marker, 'dragend', function (event) {
-    console.log(event.latLng);
-    pos = event.latLng;
-    marker.title = ''+pos;
-    map.setCenter(pos);
-    });
-
-
-    var data = getData();
-
-  var testData = [
-  {location: new google.maps.LatLng(42.293, -83.714), weight:5},
-  {location: new google.maps.LatLng(42.294, -83.714), weight:10}];
-  if(data !== null && data !== undefined)
-  {
-        heatMap(pos, map, data);
-  }
-  else
-  {
-    console.log("No data");
-  }
-
+        console.log("drag");
+        console.log(event.latLng);
+        pos = event.latLng;
+        marker.title = ''+pos;
+        map.setCenter(pos);
+      });
 
       map.setCenter(pos);
     }, function() {
@@ -106,6 +98,7 @@ function initialize() {
 }
 
 function handleNoGeolocation(errorFlag) {
+  console.log("HANDLENOGEOLOCATION");
   if (errorFlag) {
     var content = 'Error: The Geolocation service failed.';
   } else {
