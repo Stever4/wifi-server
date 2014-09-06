@@ -19,14 +19,8 @@ def index(request):
 def post_metric(request):
     try:
         d = json.loads(request.body.decode('utf8'))
-    except Exception as e:
-        return HttpResponseBadRequest("oh {}".format(e))
-    print("D1:", d)
-    try:
-        print("D:", d)
         lat = d.get("lat")
         lon = d.get("lon")
-        print ("LAT", lat)
         location = Location(latitude = lat, longitude = lon)
         location.save()
         ssid = d.get("ssid")
@@ -43,3 +37,15 @@ def post_metric(request):
         return HttpResponse("Thanks!")
     except Exception as e:
         return HttpResponseBadRequest("Woops! {}".format(e))
+
+def get_metrics(request):
+    metrics = Metric.objects.all()
+    data = []
+    for metric in metrics:
+        row = {}
+        row['latitude'] = metric.location.latitude
+        row['longitude'] = metric.location.longitude
+        row['network'] = metric.router.network.ssid
+        row['rssi'] = metric.rssi
+        data.append(row)
+    return HttpResponse(json.dumps(data))
