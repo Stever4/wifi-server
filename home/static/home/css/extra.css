@@ -8,6 +8,15 @@ h2 {
     color: blue;
 }
 
+h3 {
+    margin-top: 100px;
+    color: black;
+    font: gotham;
+    position:relative;
+    text-align: center;
+    font-size: 80px;
+}
+
 #logo {
     margin-left: auto;
     margin-right: auto;
@@ -27,7 +36,7 @@ h2 {
 }
 
 body {
-    background-color: #D0D0D0;
+    background-image: url('bg.png');
 }
 
 .btn-xlg {
@@ -41,10 +50,10 @@ body {
     height: 120px !important;
     font-size: 70px;
     line-height: normal;
-    -webkit-border-radius: 8px;
-       -moz-border-radius: 8px;
-            border-radius: 8px;
-   margin-top: 100px;
+    -webkit-border-radius: 50px;
+       -moz-border-radius: 50px;
+            border-radius: 50px;
    position: relative;
+   opacity: 0.8;
 
         }
