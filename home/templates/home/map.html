@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <title>Geolocation</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
@@ -24,18 +26,36 @@ function test(event) {
   console.log("foo");
 }
 
-function heatMap (position, map)
+function heatMap (position, map, data)
 {
-  var testData = [
-  {location: new google.maps.LatLng(42.293, -83.714), weight:5},
-  {location: new google.maps.LatLng(42.294, -83.714), weight:10}];
+  var closeData = [];
+  maxDistanceAway = .01; //In terms of lat/long
+  datapoints = data.length;
+  for(var i=0; i < datapoints; i++)
+  {
+    datapoint = data[i];
+    dLat = datapoint.location.lat() - position.lat();
+    dLong = datapoint.location.lng() - position.lng();
+    if(-1*maxDistanceAway < dLat && dLat < maxDistanceAway && -1*maxDistanceAway < dLong && dLong < maxDistanceAway)
+    {
+      console.log("close enough");
+      closeData.push(datapoint);
+    }
+  }
 
   var heatmap = new google.maps.visualization.HeatmapLayer({
-    data:testData
+    data:closeData
   });
 
   heatmap.setMap(map);
 
+}
+
+function getData()
+{
+  var data;
+  $.getJSON( "http://35.2.92.2:8000/server/get_metrics", data);
+  console.log(data);
 }
 
 function initialize() {
@@ -65,7 +85,13 @@ function initialize() {
     map.setCenter(pos);
     });
 
-    heatMap(pos, map);
+
+    var data = getData();
+
+  var testData = [
+  {location: new google.maps.LatLng(42.293, -83.714), weight:5},
+  {location: new google.maps.LatLng(42.294, -83.714), weight:10}];
+    heatMap(pos, map, testData);
 
 
       map.setCenter(pos);
