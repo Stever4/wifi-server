@@ -27,5 +27,4 @@ class Metric(models.Model):
     location = models.ForeignKey(Location)
     router = models.ForeignKey(Router)
     rssi = models.SmallIntegerField()
-    snr = models.SmallIntegerField()
     datetime = models.DateTimeField(auto_now_add=True, blank=True)

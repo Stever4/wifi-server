@@ -11,31 +11,33 @@ def index(request):
     metrics = Metric.objects.all()
 
     context = {'metrics_len': len(metrics)}
-    print(metrics)
     return render(request, 'server/index.html', context)
 
 
 @csrf_exempt
 def post_metric(request):
     try:
+        print("Test:", request.body)
         d = json.loads(request.body.decode('utf8'))
-        lat = d.get("lat")
-        lon = d.get("lon")
-        location = Location(latitude = lat, longitude = lon)
-        location.save()
-        ssid = d.get("ssid")
-        security = d.get("security")
-        network = Network(ssid = ssid, security = security)
-        network.save()
-        mac = d.get("mac")
-        router = Router(network=network, mac = mac)
-        router.save()
-        rssi = d.get("rssi")
-        snr = d.get("snr")
-        metric = Metric(location=location,router=router,rssi=rssi,snr=snr)
-        metric.save()
+        print("Incoming Post Request:", d)
+        for row in d:
+            lat = row.get("lat")
+            lon = row.get("lon")
+            location = Location(latitude = lat, longitude = lon)
+            location.save()
+            ssid = row.get("ssid")
+            security = row.get("security")
+            network = Network(ssid = ssid, security = security)
+            network.save()
+            mac = row.get("mac")
+            router = Router(network=network, mac = mac)
+            router.save()
+            rssi = row.get("rssi")
+            metric = Metric(location=location,router=router,rssi=rssi)
+            metric.save()
         return HttpResponse("Thanks!")
     except Exception as e:
+        print(e)
         return HttpResponseBadRequest("Woops! {}".format(e))
 
 def get_metrics(request):
