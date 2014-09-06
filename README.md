@@ -1,6 +1,0 @@
-wifi-server
-===========
-
-MHacks Project
-
-This is a crowd sourced wifi app
