@@ -1,7 +1,7 @@
 {% load staticfiles %}
 {% include "home/header.html" %}
 
-<form action="javascript:alert('Yo')">
+<form action="{% url 'home:map' %}">
   <input type = "submit" value="Map" class = "btn-xlg">
 </form>
 <form action="javascript:alert('Yo')">
