@@ -77,7 +77,7 @@ function initialize() {
         draggable: true,
         title: ''+pos,
       });
-
+      getData();
     google.maps.event.addListener(marker, 'dragend', function (event) {
         console.log("drag");
         console.log(event.latLng);
