@@ -1,6 +1,5 @@
-var downloadButton = document.getElementById("Download");
-if(downloadButton.attachEvent)
+function download()
 {
-    pass;
-    //Downloading code goes here
+ //Will allow for downloading
+ console.log("Success!");
 }
