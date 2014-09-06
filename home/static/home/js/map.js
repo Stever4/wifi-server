@@ -64,8 +64,7 @@ function initialize() {
   var mapOptions = {
     zoom: 19
   };
-  map = new google.maps.Map(document.getElementById('map-canvas'),
-      mapOptions);
+  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
   // Try HTML5 geolocation
   if(navigator.geolocation) {
@@ -119,5 +118,5 @@ function handleNoGeolocation(errorFlag) {
   map.setCenter(options.position);
 }
 
-//google.maps.event.addDomListener(window, 'load', initialize);
+google.maps.event.addDomListener(window, 'load', initialize);
 
