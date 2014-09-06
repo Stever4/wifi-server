@@ -1,3 +1,4 @@
+__all__ = ["Location", "Network", "Router", "Metric"]
 from django.db import models
 
 # Create your models here.
@@ -27,4 +28,4 @@ class Metric(models.Model):
     router = models.ForeignKey(Router)
     rssi = models.SmallIntegerField()
     snr = models.SmallIntegerField()
-    datetime = models.DateTimeField()
+    datetime = models.DateTimeField(auto_now_add=True, blank=True)
