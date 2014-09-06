@@ -19,13 +19,13 @@ function heatMap (position, map, data)
   }
 
   var heatmap = new google.maps.visualization.HeatmapLayer({
-    data:closeData
+    data: closeData
   });
 
   heatmap.setMap(map);
 
 }
-function parseData(raw_data)
+function parseData(raw_data, pos)
 {
     console.log("PARSEDATA");
     console.log("DATA:");
@@ -52,9 +52,11 @@ function parseData(raw_data)
     }
 }
 
-function getData(){
+function getData(pos){
   console.log("GETDATA");
-  jQuery.getJSON(metric_url, parseData);
+  jQuery.getJSON(metric_url,
+    function(raw_data) {
+      parseData(raw_data, pos);});
 }
 
 function initialize() {
