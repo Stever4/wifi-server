@@ -7,7 +7,7 @@ function test(event) {
 function heatMap (position, map, data)
 {
   var closeData = [];
-  maxDistanceAway = .01; //In terms of lat/long
+  maxDistanceAway = 0.01; //In terms of lat/long
   datapoints = data.length;
   for(var i=0; i < datapoints; i++)
   {
@@ -42,7 +42,7 @@ function getData()
       var lat = data['latitude'];
       var lng = data['longitude'];
       var strength = data['rssi'];
-      console.log({location: new google.maps.LatLng(lat, lng), weight:strength})
+      console.log({location: new google.maps.LatLng(lat, lng), weight:strength});
       realData.push({location: new google.maps.LatLng(lat, lng), weight:strength});
     }
   });
@@ -62,14 +62,14 @@ function initialize() {
   if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       var pos = new google.maps.LatLng(position.coords.latitude,
-                                       position.coords.longitude)
+                                       position.coords.longitude);
 
       var marker = new google.maps.Marker({
         position: pos,
         map: map,
         draggable: true,
         title: ''+pos,
-      })
+      });
 
     google.maps.event.addListener(marker, 'dragend', function (event) {
     console.log(event.latLng);
@@ -84,7 +84,7 @@ function initialize() {
   var testData = [
   {location: new google.maps.LatLng(42.293, -83.714), weight:5},
   {location: new google.maps.LatLng(42.294, -83.714), weight:10}];
-  if(data != null && data !== undefined)
+  if(data !== null && data !== undefined)
   {
         heatMap(pos, map, data);
   }
