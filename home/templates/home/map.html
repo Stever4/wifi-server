@@ -54,7 +54,9 @@ function heatMap (position, map, data)
 function getData()
 {
   var data;
-  $.getJSON( "http://35.2.92.2:8000/server/get_metrics", data);
+  jQuery.getJSON( "http://35.2.92.2:8000/server/get_metrics", function (result) {
+      data = result;
+  });
   console.log(data);
   length = data.length;
   var realData = [];
