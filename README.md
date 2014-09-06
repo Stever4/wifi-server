@@ -1,4 +1,0 @@
-wifi-server
-===========
-
-MHacks Project
