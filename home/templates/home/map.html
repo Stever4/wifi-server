@@ -55,7 +55,7 @@ function getData()
 {
   var data;
   var realData = [];
-  jQuery.getJSON( "we-fi.herokuapp.com/server/get_metrics", function (result) {
+  jQuery.getJSON( "server/get_metrics", function (result) {
       data = result;
       console.log(data);
     length = data.length;
