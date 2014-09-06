@@ -6,3 +6,6 @@ def index(request):
 
 def map(request):
     return render(request, 'home/map.html', {})
+
+def about(request):
+    return render(request, 'home/about.html', {})

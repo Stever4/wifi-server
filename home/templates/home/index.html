@@ -3,11 +3,13 @@
 
 <body>
     <h1>Wifi Sharing</h1>
-    <button id="Download" class = "btn-xlg" onclick="download()">Download</button>
-    <button id="About" class = "btn-xlg" onclick="about()">About</button>
-        <h2>About</h2>
-        <div id="Text"> Wifi sharing (not actual title) is an application developed for MHacks 2014 as a Mac exclusive (sorry) program designed to heatmap wifi signal strengths in a location. This data is crowd sourced, so it is constantly being updated and refined to create the most accurate heatmap possible. Using this application, it is possible to go to a new place and instantly know where to sit for the strongest wifi signal, because that is clearly very important. Developed by Robert Maratos, Jake Weiss, Kevin Reichek, and Jeremy Sonpar. ABOUT DESCRIPTION NOT REAL, WRITTEN IN LIKE 2 MINUTES </div>
-    </div>
+    <form action="javascript:alert('Yo')">
+        <input type="submit" value="Download" class = "btn-xlg">
+    </form>
+    <form action="{% url 'home:about' %}">
+        <input type="submit" value="About" class = "btn-xlg">
+    </form>
+
 </body>
 
 </html>

@@ -6,22 +6,15 @@ h1 {
 h2 {
     text-align: center;
     color: blue;
-    margin-top: 300px;
 }
 
 #Text {
     text-align: center;
     color: blue;
     font-size: 18px;
-}
-
-button {
-    display: block;
+    width: 40%;
     margin-left: auto;
     margin-right: auto;
-    background-color: blue;
-    border-color: #D0D0D0;
-    color: white;
 }
 
 body {
@@ -29,6 +22,12 @@ body {
 }
 
 .btn-xlg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: blue;
+    border-color: #D0D0D0;
+    color: white;
     width: 400px !important;
     height: 120px !important;
     font-size: 70px;
