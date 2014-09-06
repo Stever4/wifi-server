@@ -2,7 +2,9 @@
 {% include "home/header.html" %}
 
 <body>
-    <img align="middle" src="wefi_logo.png" alt="Logo" width="500" height="225">
+    <div id="logo">
+    <img src="{% static 'home/images/wefi_logo.png' %}" alt="Logo" width="500" height="225">
+</div>
     <form action="javascript:alert('Yo')">
         <input type="submit" value="Download" class = "btn-xlg">
     </form>
