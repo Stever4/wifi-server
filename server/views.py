@@ -10,7 +10,7 @@ import json
 def index(request):
     metrics = Metric.objects.all()
 
-    context = {'metrics': metrics}
+    context = {'metrics_len': len(metrics)}
     print(metrics)
     return render(request, 'server/index.html', context)
 
