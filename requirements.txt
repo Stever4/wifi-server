@@ -1,2 +1,5 @@
 Django==1.7
+certifi==14.05.14
+gunicorn==19.1.1
 psycopg2==2.5.4
+requests==2.4.0
