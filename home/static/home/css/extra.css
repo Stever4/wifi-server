@@ -9,7 +9,7 @@ h2 {
 }
 
 h3 {
-    margin-top: 100px;
+    margin-top: 80px;
     color: black;
     font: gotham;
     position:relative;
@@ -55,6 +55,6 @@ body {
        -moz-border-radius: 50px;
             border-radius: 50px;
    position: relative;
-   opacity: 0.8;
+   opacity: 0.5;
 
         }
