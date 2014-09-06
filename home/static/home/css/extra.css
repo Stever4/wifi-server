@@ -1,11 +1,11 @@
 h1 {
     text-align: center;
-    color: blue;
+    color: black;
 }
 
 h2 {
     text-align: center;
-    color: blue;
+    color: black;
 }
 
 h3 {
@@ -27,6 +27,7 @@ h3 {
     width: 40%;
     margin-left: auto;
     margin-right: auto;
+    color: black;
 }
 #Text {
     text-align: center;
