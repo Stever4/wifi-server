@@ -1,4 +1,4 @@
-#map-canvas {
+body, head, #map-canvas {
     height: 100%;
     margin: 100px;
   }
