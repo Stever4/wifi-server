@@ -12,6 +12,7 @@
       }
     </style>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=visualization"></script>
 
     <script>
 // Note: This example requires that you consent to location sharing when
@@ -23,6 +24,21 @@ var map;
 function test(event) {
   console.log("foo");
 }
+
+function heatMap (position, map)
+{
+  var testData = [
+  {location: new google.maps.LatLng(42.293, -83.714), weight:5},
+  {location: new google.maps.LatLng(42.294, -83.714), weight:10}];
+
+  var heatmap = new google.maps.visualization.HeatmapLayer({
+    data:testData
+  });
+
+  heatmap.setMap(map);
+
+}
+
 function initialize() {
   var mapOptions = {
     zoom: 19
@@ -50,6 +66,8 @@ function initialize() {
     map.setCenter(pos);
     });
 
+    heatMap(pos, map);
+
 
       map.setCenter(pos);
     }, function() {
@@ -59,8 +77,6 @@ function initialize() {
     // Browser doesn't support Geolocation
     handleNoGeolocation(false);
   }
-
-
 
 }
 
