@@ -44,7 +44,7 @@ function parseData(raw_data, pos)
     }
     if(data !== null && data !== undefined)
     {
-          heatMap(pos, map, data);
+        heatMap(pos, map, data);
     }
     else
     {
@@ -70,16 +70,18 @@ function initialize() {
   // Try HTML5 geolocation
   if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
+
       var pos = new google.maps.LatLng(position.coords.latitude,
                                        position.coords.longitude);
-
+      console.log("P1");
+      console.log(pos);
       var marker = new google.maps.Marker({
         position: pos,
         map: map,
         draggable: true,
         title: ''+pos,
       });
-      getData();
+      getData(pos);
     google.maps.event.addListener(marker, 'dragend', function (event) {
         console.log("drag");
         console.log(event.latLng);
