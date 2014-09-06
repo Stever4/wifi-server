@@ -56,6 +56,16 @@ function getData()
   var data;
   $.getJSON( "http://35.2.92.2:8000/server/get_metrics", data);
   console.log(data);
+  length = data.length;
+  var realData = [];
+  for(var i=0; i < length; i++)
+  {
+    var lat = data['latitude'];
+    var lng = data['longitude'];
+    var strength = data['rssi'];
+    realData.push({location: new google.maps.LatLng(lat, lng), weight:strength});
+  }
+  return realData;
 }
 
 function initialize() {
