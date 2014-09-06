@@ -64,6 +64,7 @@ function getData()
       var lat = data['latitude'];
       var lng = data['longitude'];
       var strength = data['rssi'];
+      console.log({location: new google.maps.LatLng(lat, lng), weight:strength})
       realData.push({location: new google.maps.LatLng(lat, lng), weight:strength});
     }
   });
