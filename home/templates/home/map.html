@@ -1,22 +1,6 @@
 {% load staticfiles %}
+{% include "home/map-header.html" %}
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <title>Geolocation</title>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="{% static 'home/css/map.css' %}"></style>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=visualization"></script>
+<div id="map-canvas"></div>
 
-    <script>
-    metric_url = "{% url 'server:get_metrics' %}";
-    </script>
-    <script src="{% static 'home/js/map.js' %}"></script>
-  </head>
-  <body>
-    <div id="map-canvas"></div>
-  </body>
-</html>
+{% include "home/footer.html" %}
