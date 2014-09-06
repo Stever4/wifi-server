@@ -67,6 +67,7 @@ function getData()
       realData.push({location: new google.maps.LatLng(lat, lng), weight:strength});
     }
   });
+  console.log(realData);
    return realData;
 }
 
@@ -103,9 +104,9 @@ function initialize() {
   var testData = [
   {location: new google.maps.LatLng(42.293, -83.714), weight:5},
   {location: new google.maps.LatLng(42.294, -83.714), weight:10}];
-  if(testData != null && data !== undefined)
+  if(data != null && data !== undefined)
   {
-        heatMap(pos, map, testData);
+        heatMap(pos, map, data);
   }
   else
   {
