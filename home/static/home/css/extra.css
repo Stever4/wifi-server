@@ -8,13 +8,16 @@ h2 {
     color: blue;
 }
 
+#about {
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+}
 #Text {
     text-align: center;
     color: blue;
     font-size: 18px;
-    width: 40%;
-    margin-left: auto;
-    margin-right: auto;
+
 }
 
 body {
