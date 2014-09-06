@@ -56,18 +56,18 @@ function getData()
   var data;
   jQuery.getJSON( "http://35.2.92.2:8000/server/get_metrics", function (result) {
       data = result;
+      console.log(data);
+    length = data.length;
+    var realData = [];
+    for(var i=0; i < length; i++)
+    {
+      var lat = data['latitude'];
+      var lng = data['longitude'];
+      var strength = data['rssi'];
+      realData.push({location: new google.maps.LatLng(lat, lng), weight:strength});
+    }
   });
-  console.log(data);
-  length = data.length;
-  var realData = [];
-  for(var i=0; i < length; i++)
-  {
-    var lat = data['latitude'];
-    var lng = data['longitude'];
-    var strength = data['rssi'];
-    realData.push({location: new google.maps.LatLng(lat, lng), weight:strength});
-  }
-  return realData;
+   return realData;
 }
 
 function initialize() {
@@ -103,7 +103,14 @@ function initialize() {
   var testData = [
   {location: new google.maps.LatLng(42.293, -83.714), weight:5},
   {location: new google.maps.LatLng(42.294, -83.714), weight:10}];
-    heatMap(pos, map, testData);
+  if(testData != null && data !== undefined)
+  {
+        heatMap(pos, map, testData);
+  }
+  else
+  {
+    console.log("No data");
+  }
 
 
       map.setCenter(pos);
