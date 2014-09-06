@@ -1,4 +1,5 @@
-body, head, #map-canvas {
-    height: 100%;
-    margin: 100px;
-  }
+html, body, #map-canvas {
+        height: 100%;
+        margin: 100px;
+        padding: 0px
+      }

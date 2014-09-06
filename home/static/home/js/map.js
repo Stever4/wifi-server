@@ -1,25 +1,3 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <title>Geolocation</title>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <style>
-      html, body, #map-canvas {
-        height: 100%;
-        margin: 0px;
-        padding: 0px
-      }
-    </style>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=visualization"></script>
-
-    <script>
-// Note: This example requires that you consent to location sharing when
-// prompted by your browser. If you see a blank space instead of the map, this
-// is probably because you have denied permission for location sharing.
-
 var map;
 
 function test(event) {
@@ -55,7 +33,7 @@ function getData()
 {
   var data;
   var realData = [];
-  jQuery.getJSON( "server/get_metrics", function (result) {
+  jQuery.getJSON( metric_url, function (result) {
       data = result;
       console.log(data);
     length = data.length;
@@ -146,9 +124,3 @@ function handleNoGeolocation(errorFlag) {
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
-    </script>
-  </head>
-  <body>
-    <div id="map-canvas"></div>
-  </body>
-</html>
