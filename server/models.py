@@ -28,3 +28,6 @@ class Metric(models.Model):
     router = models.ForeignKey(Router)
     rssi = models.SmallIntegerField()
     datetime = models.DateTimeField(auto_now_add=True, blank=True)
+
+    def __str__(self):
+        return "{}:{}".format(self.datetime, self.rssi)
