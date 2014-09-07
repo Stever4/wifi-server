@@ -1,4 +1,5 @@
 var map;
+var heatmap;
 
 function heatMap (position, map, data)
 {
@@ -18,8 +19,9 @@ function heatMap (position, map, data)
     }
   }
 
-  var heatmap = new google.maps.visualization.HeatmapLayer({
+heatmap = new google.maps.visualization.HeatmapLayer({
     data: closeData,
+    opacity: .75,
     radius: 30
   });
 
@@ -98,6 +100,9 @@ function initialize() {
     handleNoGeolocation(false);
   }
 
+
+var timingFunction = setInterval(function () {console.log("foo"), 10000});
+
 }
 
 function handleNoGeolocation(errorFlag) {
@@ -119,4 +124,3 @@ function handleNoGeolocation(errorFlag) {
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
-
