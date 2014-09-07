@@ -31,7 +31,7 @@ function initialize() {
                                 mapOptions);
   google.maps.event.addListener(map,'click',function(event){
     var message = "event.latLng.lat() + ', ' + event.latLng.lng()"
-    window.webkit.messageHandlers.interOp.postMessage(message)
+    window.webkit.messageHandlers.latlon.postMessage(message)
   });
 
 }
