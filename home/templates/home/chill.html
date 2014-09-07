@@ -17,7 +17,7 @@
     <script>
 function initialize() {
   var mapOptions = {
-    zoom: 15,
+    zoom: 20,
     center: new google.maps.LatLng(42.293, -83.714),
     disableDefaultUI: true,
     panControl: false,
@@ -29,11 +29,19 @@ function initialize() {
   }
   var map = new google.maps.Map(document.getElementById('map-canvas'),
                                 mapOptions);
+  google.maps.event.addListener(map,'click',function(event){
+    var message = "event.latLng.lat() + ', ' + event.latLng.lng()"
+    window.webkit.messageHandlers.interOp.postMessage(message)
+  });
+
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
     </script>
+
+
+
   </head>
   <body>
     <div id="map-canvas"></div>
