@@ -2,26 +2,29 @@
 {% include "home/header.html" %}
 
 <body>
-
-
-
-<div class="buttons" id="download">
-	<form action="javascript:alert('Yo')">
-        <input type="submit" value="Download" class = "btn-xlg">
-    </form>
-</div>
-
-<div class="buttons" id="map">
-    <form action="{% url 'home:map' %}">
-        <input type="submit" value="Map" class = "btn-xlg">
-    </form>
-</div>
-
-{% include "home/about.html" %}
 <div id="heatmapContainerWrapper">
+
+
   <div id="heatmapContainer">
 
-  </div>
+
+    </div>
+    <div class="buttons" id="download">
+        <form action="{% static "home/we-finder.zip" %}">
+            <input type="submit" value="Download" class = "btn-xlg">
+            </form>
+        </div>
+    <div class="buttons" id="map">
+        <form action="{% url 'home:map' %}">
+            <input type="submit" value="Map" class = "btn-xlg">
+        </form>
+    </div>
+     <div id="logo">
+        <img src="{% static 'home/images/logo.png' %}" alt="Logo" >
+    </div>
+
+
+{% include "home/about.html" %}
 </div>
 </body>
 </html>

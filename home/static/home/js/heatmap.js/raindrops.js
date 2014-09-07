@@ -28,7 +28,7 @@ window.onload = function() {
 
         // this generates new datapoints in a kind of random timing
         setTimeout(function test() {
-          var rand = (Math.random() * 500) >> 0;
+          var rand = (Math.random() * 2000) >> 0;
           generate();
           setTimeout(test, rand);
         }, 1000);
