@@ -40,6 +40,12 @@ else if(heatmap !== null && heatmap !== undefined && heatmap.getData() !== null
 }
 
 }
+
+function scaleWeight(rssi)
+{
+  return (rssi+100)*500;
+}
+
 function parseData(raw_data, pos, first)
 {
     console.log("PARSEDATA");
@@ -51,7 +57,7 @@ function parseData(raw_data, pos, first)
       var row = raw_data[i];
       var lat = row.latitude;
       var lng = row.longitude;
-      var strength = 1000*(row.rssi + 100);
+      var strength = scaleWeight(row.rssi);
       row = {location: new google.maps.LatLng(lat, lng), weight:strength};
       console.log("Pushing row:");
       console.log(row);
