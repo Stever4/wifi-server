@@ -6,5 +6,5 @@ urlpatterns = patterns('',
     url(r'^$', views.index, name='index'),
     url(r'^about$', views.about, name='about'),
     url(r'^map$', views.map, name='map'),
-    url(r'^mapTest$', views.map, name='mapTest'),
+    url(r'^mapTest$', views.mapTest, name='mapTest'),
 )

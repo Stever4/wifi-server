@@ -4,21 +4,18 @@
 <body>
 <div style="width: 850px; margin-left: auto; margin-right: auto; ">
 <div id="download" style="float: left; margin-right: 40px;" >
-	<h3>Help</h3>
 	<form action="javascript:alert('Yo')">
         <input type="submit" value="Download" class = "btn-xlg">
     </form>
 </div>
-<div id="idk" style="float: left;">
-    <h3>Be Lame</h3>
+<div id="map" style="float: left;">
     <form action="{% url 'home:map' %}">
         <input type="submit" value="Map" class = "btn-xlg">
     </form>
 </div>
 </div>
-<form action="{% url 'home:about' %}">
-    <input type="submit" value="About" class = "btn-xlg">
-</form>
+{% include "home/about.html" %}
+
 
 </body>
 
