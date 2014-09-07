@@ -12,8 +12,12 @@ from datetime import timedelta
 
 def index(request):
     metrics = Metric.objects.all()
-
-    context = {'metrics_len': len(metrics)}
+    rssi_values = [metric.rssi for metric in metrics]
+    rssi_min = min(rssi_values)
+    rssi_max = max(rssi_values)
+    rssi_avg = sum(rssi_values)/len(rssi_values)
+    context = {'metrics_len': len(metrics), 'min': rssi_min, 'max': rssi_max,
+    'avg':rssi_avg}
     return render(request, 'server/index.html', context)
 
 

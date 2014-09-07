@@ -40,6 +40,16 @@ else if(heatmap !== null && heatmap !== undefined && heatmap.getData() !== null
 }
 
 }
+
+function scaleWeight(rssi)
+{
+  rssi_low = -88;
+  rssi_max = -57;
+  weight_low = 0;
+  weight_max = 5;
+  return weight_max*(1-(rssi-rssi_low)/(rssi_max - rssi_low))+ weight_max*(rssi-rssi_low)/(rssi_max-rssi_low);
+}
+
 function parseData(raw_data, pos, first)
 {
     console.log("PARSEDATA");
@@ -51,7 +61,7 @@ function parseData(raw_data, pos, first)
       var row = raw_data[i];
       var lat = row.latitude;
       var lng = row.longitude;
-      var strength = row.rssi;
+      var strength = scaleWeight(row.rssi);
       row = {location: new google.maps.LatLng(lat, lng), weight:strength};
       console.log("Pushing row:");
       console.log(row);
