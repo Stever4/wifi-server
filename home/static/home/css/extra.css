@@ -1,33 +1,33 @@
 #logo {
     position: absolute;
+    top: 5%;
     left: 40%;
 }
 
 #about {
     position:absolute;
-    top:60%;
+    top:55%;
     left: 30%;
     width: 40%;
-    color: white;
-    background: blue;
-    opacity: 0.5;
+    color: black;
+    background: white;
+    opacity: 0.8;
 }
 
 
 #download {
     position:absolute;
-    top: 30%;
     left:15%;
 }
 
 #map {
     position:absolute;
-    top: 30%;
     left:55%;
 }
 
 .buttons {
     position: absolute;
+    top: 35%;
     width: 30%;
 
 }
@@ -59,6 +59,6 @@ body, html {
     -webkit-border-radius: 50px;
        -moz-border-radius: 50px;
             border-radius: 50px;
-   opacity: 0.7;
+   opacity: 0.8;
 
         }
