@@ -34,8 +34,8 @@ if(first)
 
 else if(heatmap !== null && heatmap !== undefined)
 {
-  oldData = heatmap.data;
-  heatmap.data = oldData.concat(closeData);
+  oldData = heatmap.getData();
+  heatmap.setData(oldData.concat(closeData));
 }
 
 }
