@@ -31,5 +31,5 @@ window.onload = function() {
           var rand = (Math.random() * 500) >> 0;
           generate();
           setTimeout(test, rand);
-        }, 100);
+        }, 1000);
       };

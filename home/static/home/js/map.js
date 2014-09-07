@@ -25,7 +25,7 @@ if(first)
 {
   heatmap = new google.maps.visualization.HeatmapLayer({
     data: closeData,
-    opacity: .75,
+    opacity: 0.75,
     radius: 30
   });
 
