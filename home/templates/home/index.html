@@ -3,27 +3,23 @@
 
 <body>
 <div id="heatmapContainerWrapper">
+
   <div id="heatmapContainer">
 
   </div>
-
-<div id="buttons" class="row">
-
-<div class="col-md-6" id="download">
-	<form action="javascript:alert('Yo')">
+      <div class="buttons" id="download">
+    <form action="javascript:alert('Yo')">
         <input type="submit" value="Download" class = "btn-xlg">
     </form>
 </div>
 
-<div class="col-md-6" id="map">
+<div class="buttons" id="map">
     <form action="{% url 'home:map' %}">
         <input type="submit" value="Map" class = "btn-xlg">
     </form>
 </div>
-</div>
 
 {% include "home/about.html" %}
-
 </div>
 </body>
 </html>

@@ -25,17 +25,18 @@ if(first)
 {
   heatmap = new google.maps.visualization.HeatmapLayer({
     data: closeData,
-    opacity: .75,
+    opacity: 0.75,
     radius: 30
   });
 
   heatmap.setMap(map);
 }
 
-else
+else if(heatmap !== null && heatmap !== undefined && heatmap.getData() !== null
+  && heatmap.getData() !== undefined)
 {
-  oldData = heatmap.data;
-  heatmap.data = oldData.concat(closeData);
+  oldData = heatmap.getData()['j'];
+  heatmap.setData(oldData.concat(closeData));
 }
 
 }
