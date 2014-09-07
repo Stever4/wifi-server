@@ -32,7 +32,7 @@ if(first)
   heatmap.setMap(map);
 }
 
-else
+else if(heatmap !== null && heatmap !== undefined)
 {
   oldData = heatmap.data;
   heatmap.data = oldData.concat(closeData);
