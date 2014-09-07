@@ -16,6 +16,19 @@
     </script>
     <script>
 function initialize() {
+  var styles = [
+    {
+    featureType: "poi",
+    elementType: "labels",//hides all labels
+    stylers: [
+      { visibility:'off' }
+    ]
+  }
+  ];
+
+var styledMap = new google.maps.StyledMapType(styles,
+    {name: "Styled Map"});
+
   var mapOptions = {
     zoom: 25,
     center: new google.maps.LatLng(42.293, -83.714),
@@ -26,9 +39,23 @@ function initialize() {
     maxZoom: 15,
     minZoom: 15,
     mapTypeId: 'hybrid'
-  }
+};
+
+  
   var map = new google.maps.Map(document.getElementById('map-canvas'),
-                                mapOptions);
+    mapOptions);
+
+  
+  map.setOptions(
+    {
+      styles: [{
+        featureType: "poi",
+        elementType: "labels",
+        stylers: [{ visibility:'off' }]}
+  ]});
+
+
+
   google.maps.event.addListener(map,'click',function(event){
     var message = event.latLng.lat() + ', ' + event.latLng.lng()
     window.webkit.messageHandlers.latlon.postMessage(message)
