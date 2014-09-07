@@ -70,6 +70,7 @@ function parseData(raw_data, pos, first)
 function getData(pos, first){
   console.log("GETDATA");
   jQuery.getJSON(metric_url,
+    {first: first}).done(
     function(raw_data) {
       parseData(raw_data, pos, first);});
 }
