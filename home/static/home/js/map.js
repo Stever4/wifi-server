@@ -43,7 +43,7 @@ else if(heatmap !== null && heatmap !== undefined && heatmap.getData() !== null
 
 function scaleWeight(rssi)
 {
-  return (rssi+100)*500;
+  return (rssi+100)*100;
 }
 
 function parseData(raw_data, pos, first)
