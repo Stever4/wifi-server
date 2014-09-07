@@ -51,7 +51,7 @@ function parseData(raw_data, pos, first)
       var row = raw_data[i];
       var lat = row.latitude;
       var lng = row.longitude;
-      var strength = row.rssi + 60;
+      var strength = 1000*(row.rssi + 100);
       row = {location: new google.maps.LatLng(lat, lng), weight:strength};
       console.log("Pushing row:");
       console.log(row);
