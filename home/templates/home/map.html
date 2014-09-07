@@ -2,7 +2,9 @@
 {% include "home/map-header.html" %}
 <body>
     <div id="map_logo">
+        <a href = "{% url 'home:index' %}">
     <img src="{% static 'home/images/logo.png' %}" alt="Logo">
+</a>
 </div>
 <div id="map-canvas"></div>
 

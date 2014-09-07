@@ -2,21 +2,23 @@
 {% include "home/header.html" %}
 
 <body>
-<div style="width: 850px; margin-left: auto; margin-right: auto; ">
-<div id="download" style="float: left; margin-right: 40px;" >
+<div id="buttons" class="row">
+
+<div class="col-md-6" id="download">
 	<form action="javascript:alert('Yo')">
         <input type="submit" value="Download" class = "btn-xlg">
     </form>
 </div>
-<div id="map" style="float: left;">
+
+<div class="col-md-6" id="map">
     <form action="{% url 'home:map' %}">
         <input type="submit" value="Map" class = "btn-xlg">
     </form>
 </div>
 </div>
+
 {% include "home/about.html" %}
 
 
 </body>
-
 </html>
