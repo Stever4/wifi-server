@@ -35,7 +35,7 @@ if(first)
 else if(heatmap !== null && heatmap !== undefined && heatmap.getData() !== null
   && heatmap.getData() !== undefined)
 {
-  oldData = heatmap.getData()['j'];
+  oldData = heatmap.getData()['j']; //why?
   heatmap.setData(oldData.concat(closeData));
 }
 
@@ -51,7 +51,7 @@ function parseData(raw_data, pos, first)
       var row = raw_data[i];
       var lat = row.latitude;
       var lng = row.longitude;
-      var strength = row.rssi;
+      var strength = row.rssi; //assumes values in range of -100 to -60 ish
       row = {location: new google.maps.LatLng(lat, lng), weight:strength};
       console.log("Pushing row:");
       console.log(row);
