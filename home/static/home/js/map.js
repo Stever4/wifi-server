@@ -47,7 +47,7 @@ function scaleWeight(rssi)
   rssi_max = -57;
   weight_low = 0;
   weight_max = 5;
-  return weight_max*(1-(rssi-rssi_low)/(rssi_max - rssi_low))+ weight_max*(rssi-rssi_low)/(rssi_max-rssi_low);
+  return weight_low*(1-(rssi-rssi_low)/(rssi_max - rssi_low))+ weight_max*(rssi-rssi_low)/(rssi_max-rssi_low);
 }
 
 function parseData(raw_data, pos, first)
