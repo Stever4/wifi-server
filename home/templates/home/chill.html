@@ -30,7 +30,7 @@ function initialize() {
   var map = new google.maps.Map(document.getElementById('map-canvas'),
                                 mapOptions);
   google.maps.event.addListener(map,'click',function(event){
-    var message = "event.latLng.lat() + ', ' + event.latLng.lng()"
+    var message = event.latLng.lat() + ', ' + event.latLng.lng()
     window.webkit.messageHandlers.latlon.postMessage(message)
   });
 
