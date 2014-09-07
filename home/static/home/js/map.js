@@ -32,9 +32,10 @@ if(first)
   heatmap.setMap(map);
 }
 
-else if(heatmap !== null && heatmap !== undefined)
+else if(heatmap !== null && heatmap !== undefined && heatmap.getData() !== null
+  && heatmap.getData() !== undefined)
 {
-  oldData = heatmap.getData();
+  oldData = heatmap.getData()['j'];
   heatmap.setData(oldData.concat(closeData));
 }
 
