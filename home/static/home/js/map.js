@@ -4,7 +4,7 @@ function heatMap (position, map, data)
 {
   console.log("HEATMAP");
   var closeData = [];
-  maxDistanceAway = 0.01; //In terms of lat/long
+  maxDistanceAway = 0.005; //In terms of lat/long
   datapoints = data.length;
   for(var i=0; i < datapoints; i++)
   {
@@ -19,13 +19,13 @@ function heatMap (position, map, data)
   }
 
   var heatmap = new google.maps.visualization.HeatmapLayer({
-    data:closeData
+    data: closeData
   });
 
   heatmap.setMap(map);
 
 }
-function parseData(raw_data)
+function parseData(raw_data, pos)
 {
     console.log("PARSEDATA");
     console.log("DATA:");
@@ -44,7 +44,7 @@ function parseData(raw_data)
     }
     if(data !== null && data !== undefined)
     {
-          heatMap(pos, map, data);
+        heatMap(pos, map, data);
     }
     else
     {
@@ -52,9 +52,11 @@ function parseData(raw_data)
     }
 }
 
-function getData(){
+function getData(pos){
   console.log("GETDATA");
-  jQuery.getJSON(metric_url, parseData);
+  jQuery.getJSON(metric_url,
+    function(raw_data) {
+      parseData(raw_data, pos);});
 }
 
 function initialize() {
@@ -62,22 +64,22 @@ function initialize() {
   var mapOptions = {
     zoom: 19
   };
-  map = new google.maps.Map(document.getElementById('map-canvas'),
-      mapOptions);
+  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
   // Try HTML5 geolocation
   if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       var pos = new google.maps.LatLng(position.coords.latitude,
                                        position.coords.longitude);
-
+      console.log("P1");
+      console.log(pos);
       var marker = new google.maps.Marker({
         position: pos,
         map: map,
         draggable: true,
         title: ''+pos,
       });
-      getData();
+      getData(pos);
     google.maps.event.addListener(marker, 'dragend', function (event) {
         console.log("drag");
         console.log(event.latLng);

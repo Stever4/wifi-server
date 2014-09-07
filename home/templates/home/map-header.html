@@ -9,6 +9,9 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <link rel="stylesheet" href="{% static 'home/css/map.css' %}"></style>
+    <link rel="stylesheet" href="{% static "home/css/bootstrap.css" %}"/>
+    <link rel="stylesheet" href="{% static "home/css/extra.css" %}"/>
+    <script src="{% static "home/js/home.js" %}"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=visualization"></script>
     <script>
     metric_url = "{% url 'server:get_metrics' %}";
