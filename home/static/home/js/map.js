@@ -4,7 +4,7 @@ function heatMap (position, map, data)
 {
   console.log("HEATMAP");
   var closeData = [];
-  maxDistanceAway = 0.01; //In terms of lat/long
+  maxDistanceAway = 0.005; //In terms of lat/long
   datapoints = data.length;
   for(var i=0; i < datapoints; i++)
   {
