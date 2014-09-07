@@ -43,8 +43,11 @@ else if(heatmap !== null && heatmap !== undefined && heatmap.getData() !== null
 
 function scaleWeight(rssi)
 {
-  console.log(rssi);
-  return (rssi+100)*50;
+  rssi_low = -100;
+  rssi_max = 0;
+  weight_low = 0;
+  weight_max = 1;
+  return weight_max*(1-(rssi-rssi_low)/(rssi_max - rssi_low))+ weight_max*(rssi-rssi_low)/(rssi_max-rssi_low);
 }
 
 function parseData(raw_data, pos, first)
