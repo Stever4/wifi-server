@@ -15,8 +15,10 @@
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAla1LxwXGWPJr2Vy1KDQ7WxitTWMEkjvQ">
     </script>
     <script>
-var lati = 0
-var longi = 0
+
+latitude = 40
+longitude = 40
+var map
 function initialize() {
   var styles = [
     {
@@ -33,7 +35,7 @@ var styledMap = new google.maps.StyledMapType(styles,
 
   var mapOptions = {
     zoom: 17,
-    center: new google.maps.LatLng(lati, longi),
+    center: new google.maps.LatLng(latitude, longitude),
     disableDefaultUI: true,
     panControl: false,
     draggable: false,
@@ -44,7 +46,7 @@ var styledMap = new google.maps.StyledMapType(styles,
 };
 
   
-  var map = new google.maps.Map(document.getElementById('map-canvas'),
+  map = new google.maps.Map(document.getElementById('map-canvas'),
     mapOptions);
 
   
@@ -65,13 +67,19 @@ var styledMap = new google.maps.StyledMapType(styles,
 
 }
 
-function setCoords(lat,lon){
-    lati = lat
-    longi = lon
-    google.maps.event.addDomListener(window, 'load', initialize);
+google.maps.event.addDomListener(window, 'load', initialize);
+
+function setCoords(lat, lon) {
+  latitude = lat
+  longitude = lon
+  position = new google.maps.LatLng(latitude,longitude)
+  map.setCenter(position)
+  
 }
 
-    </script>
+
+
+</script>
 
 
 
