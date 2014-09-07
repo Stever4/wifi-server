@@ -20,8 +20,7 @@ function heatMap (position, map, data)
 
   var heatmap = new google.maps.visualization.HeatmapLayer({
     data: closeData,
-    dissipating: true,
-    radius: 20
+    radius: 30
   });
 
   heatmap.setMap(map);
