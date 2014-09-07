@@ -5,6 +5,9 @@ from django.views.decorators.csrf import csrf_exempt
 from server.models import *
 
 import json
+from django.utils import timezone
+from datetime import timedelta
+
 # Create your views here.
 
 def index(request):
@@ -41,7 +44,13 @@ def post_metric(request):
         return HttpResponseBadRequest("Woops! {}".format(e))
 
 def get_metrics(request):
-    metrics = Metric.objects.all()
+    query_dict = request.GET
+    first = query_dict.get("first")
+    if first=='true':
+        metrics = Metric.objects.all()
+    else:
+        time_threshold = timezone.now() - timedelta(seconds=30)
+        metrics = Metric.objects.filter(datetime__gt=time_threshold)
     data = []
     for metric in metrics:
         row = {}
