@@ -1,7 +1,9 @@
 var map;
 var heatmap;
+var pos;
 
-function heatMap (position, map, data)
+
+function heatMap (position, map, data, first)
 {
   console.log("HEATMAP");
   var closeData = [];
@@ -19,16 +21,25 @@ function heatMap (position, map, data)
     }
   }
 
-heatmap = new google.maps.visualization.HeatmapLayer({
+if(first)
+{
+  heatmap = new google.maps.visualization.HeatmapLayer({
     data: closeData,
     opacity: 0.75,
     radius: 30
   });
 
   heatmap.setMap(map);
+}
+
+else
+{
+  oldData = heatmap.data;
+  heatmap.data = oldData.concat(closeData);
+}
 
 }
-function parseData(raw_data, pos)
+function parseData(raw_data, pos, first)
 {
     console.log("PARSEDATA");
     console.log("DATA:");
@@ -47,7 +58,7 @@ function parseData(raw_data, pos)
     }
     if(data !== null && data !== undefined)
     {
-        heatMap(pos, map, data);
+        heatMap(pos, map, data, first);
     }
     else
     {
@@ -55,11 +66,11 @@ function parseData(raw_data, pos)
     }
 }
 
-function getData(pos){
+function getData(pos, first){
   console.log("GETDATA");
   jQuery.getJSON(metric_url,
     function(raw_data) {
-      parseData(raw_data, pos);});
+      parseData(raw_data, pos, first);});
 }
 
 function initialize() {
@@ -72,7 +83,7 @@ function initialize() {
   // Try HTML5 geolocation
   if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
-      var pos = new google.maps.LatLng(position.coords.latitude,
+      pos = new google.maps.LatLng(position.coords.latitude,
                                        position.coords.longitude);
       console.log("P1");
       console.log(pos);
@@ -82,7 +93,7 @@ function initialize() {
         draggable: true,
         title: ''+pos,
       });
-      getData(pos);
+      getData(pos, true);
     google.maps.event.addListener(marker, 'dragend', function (event) {
         console.log("drag");
         console.log(event.latLng);
@@ -99,9 +110,6 @@ function initialize() {
     // Browser doesn't support Geolocation
     handleNoGeolocation(false);
   }
-
-
-var timingFunction = setInterval(function () {console.log("foo"), 10000});
 
 }
 
@@ -124,3 +132,13 @@ function handleNoGeolocation(errorFlag) {
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
+
+
+function timedFunction()
+{
+  console.log("TIME");
+  getData(pos, false);
+  setTimeout(timedFunction, 10000);
+}
+
+setTimeout(timedFunction, 10000);
