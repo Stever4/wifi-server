@@ -1,9 +1,6 @@
 var map;
 var heatmap;
 
-
-var timingFunction = setInterval(function () {console.log("foo"), 10000});
-
 function heatMap (position, map, data)
 {
   console.log("HEATMAP");
@@ -102,6 +99,9 @@ function initialize() {
     // Browser doesn't support Geolocation
     handleNoGeolocation(false);
   }
+
+
+var timingFunction = setInterval(function () {console.log("foo"), 10000});
 
 }
 
